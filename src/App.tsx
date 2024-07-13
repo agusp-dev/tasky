@@ -1,3 +1,4 @@
+import { PageContainer } from '~/layout'
 
 export const App = () => { 
   return (
@@ -7,7 +8,9 @@ export const App = () => {
       >
         Tasky App
       </h2>
-      <p>Main Content</p>
+      <PageContainer>
+        <p>Main Content</p>
+      </PageContainer>
     </>
   )
 }
