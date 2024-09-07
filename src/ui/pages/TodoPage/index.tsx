@@ -1,4 +1,4 @@
-import { NewTask, TaskItem } from '~/ui/components'
+import { NewTask, TaskItem, TodoTitle } from '~/ui/components'
 import { taskItems } from '~/mock'
 import { TaskItem as TaskItemType, TaskStatus } from '~/types'
 import { getNewTaskId } from '~/utils/uuid'
@@ -31,6 +31,9 @@ export const TodoPage = () => {
 
   return (
     <div className='w-96 flex flex-col justify-center gap-5'>
+      <div className='pb-2'>
+        <TodoTitle title='My Awesome Todo' />
+      </div>
       <NewTask onCreate={ createNewTask } />
       <div className='w-full bg-white p-5'>
         <ul>

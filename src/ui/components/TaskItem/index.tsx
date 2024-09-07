@@ -20,16 +20,16 @@ export const TaskItem: React.FC<Props> = ({ task, onToggleStatus }) => {
 
   return (
     <li className='py-3'>
-      <Field className='flex items-center gap-4'>
+      <Field className='flex items-center gap-4 cursor-pointer'>
         <Checkbox 
-          className='group size-6 rounded-md border-2 border-purple-300 flex justify-center items-center'
+          className='group size-6 rounded-md border-2 border-purple-300 flex justify-center items-center cursor-pointer'
           checked={ task?.status === TASK_STATUSES.COMPLETED }
           onChange={ onTaskChecked }
         >
           {isChecked && <CheckIcon className='fill-purple-700' />}
         </Checkbox>
         <Label 
-          className={ `text-slate-800 ${ isChecked ? 'font-light line-through' : 'font-normal' }` }
+          className={ `text-slate-800 cursor-pointer ${ isChecked ? 'font-light line-through' : 'font-normal' }` }
         >
           { task?.title }
         </Label>
