@@ -1,8 +1,9 @@
 import { NewTask, TaskItem } from '~/ui/components'
 import { taskItems } from '~/mock'
-import { TaskItem as TaskItemType } from '~/types'
+import { TaskItem as TaskItemType, TaskStatus } from '~/types'
 import { getNewTaskId } from '~/utils/uuid'
 import { useState } from 'react'
+import { TASK_STATUSES } from '~/constants'
 
 export const TodoPage = () => {
 
@@ -13,12 +14,19 @@ export const TodoPage = () => {
     title: taskTitle,
     description: '',
     createdAt: '',
-    status: 'pending'
+    status: TASK_STATUSES.PENDING
   })
 
   const createNewTask = (taskTitle: string) => {
     const newTask = getNewTask(taskTitle)
     setTasks(currentTasks => [...currentTasks, newTask])
+  }
+
+  const changeTaskStatus = (id: string, newStatus: TaskStatus) => {
+    setTasks(currentTasks => {
+      const updatedTasks = currentTasks?.map(task => task?.id === id ? { ...task, status: newStatus } : { ...task })
+      return updatedTasks ?? []
+    })
   }
 
   return (
@@ -29,7 +37,8 @@ export const TodoPage = () => {
           {tasks?.map(ti => (
             <TaskItem 
               key={ti?.id} 
-              { ...ti } 
+              task={ti} 
+              onToggleStatus={ changeTaskStatus }
             />
           ))}
         </ul>
