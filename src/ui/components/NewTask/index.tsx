@@ -31,7 +31,7 @@ export const NewTask: React.FC<Props> = ({ onCreate }) => {
           type='text' 
           placeholder='My awesome task'
         />
-        <button>Add</button>
+        <button className='text-purple-600 '>Add</button>
       </div>
     </form>
   )
