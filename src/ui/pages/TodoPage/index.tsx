@@ -29,19 +29,27 @@ export const TodoPage = () => {
     })
   }
 
+  const removeTask = (id: string) => {
+    setTasks(currentTasks => {
+      const tasksWithoutRemoved = currentTasks?.filter(task => task?.id !== id)
+      return tasksWithoutRemoved ?? []
+    })
+  }
+
   return (
     <div className='w-96 flex flex-col justify-center gap-5'>
       <div className='pb-2'>
         <TodoTitle title='My Awesome Todo' />
       </div>
       <NewTask onCreate={ createNewTask } />
-      <div className='w-full bg-white p-5'>
+      <div className='w-full bg-white py-3 pl-4 pr-1'>
         <ul>
           {tasks?.map(ti => (
             <TaskItem 
               key={ti?.id} 
               task={ti} 
               onToggleStatus={ changeTaskStatus }
+              onRemove={ removeTask }
             />
           ))}
         </ul>
