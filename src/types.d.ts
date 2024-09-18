@@ -7,3 +7,9 @@ export interface TaskItem {
   createdAt: string,
   status: TaskStatus
 }
+
+export type Filter = {
+  id: number,
+  key: 'ALL' | 'PENDING' | 'COMPLETED',
+  title: string
+}
